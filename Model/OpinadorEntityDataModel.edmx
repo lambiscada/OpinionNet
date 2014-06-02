@@ -1,0 +1,420 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Es.Udc.DotNet.PracticaIS.Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="EsUdcDotNetPracticaISModelStoreContainer">
+          <EntitySet Name="Comentario" EntityType="Es.Udc.DotNet.PracticaIS.Model.Store.Comentario" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ComentarioEtiqueta" EntityType="Es.Udc.DotNet.PracticaIS.Model.Store.ComentarioEtiqueta" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Etiqueta" EntityType="Es.Udc.DotNet.PracticaIS.Model.Store.Etiqueta" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Favorito" EntityType="Es.Udc.DotNet.PracticaIS.Model.Store.Favorito" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserProfile" EntityType="Es.Udc.DotNet.PracticaIS.Model.Store.UserProfile" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Valoracion" EntityType="Es.Udc.DotNet.PracticaIS.Model.Store.Valoracion" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_ComentarioEtiquetaComentarioId" Association="Es.Udc.DotNet.PracticaIS.Model.Store.FK_ComentarioEtiquetaComentarioId">
+            <End Role="Comentario" EntitySet="Comentario" />
+            <End Role="ComentarioEtiqueta" EntitySet="ComentarioEtiqueta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ComentarioEtiquetaEtiquetaId" Association="Es.Udc.DotNet.PracticaIS.Model.Store.FK_ComentarioEtiquetaEtiquetaId">
+            <End Role="Etiqueta" EntitySet="Etiqueta" />
+            <End Role="ComentarioEtiqueta" EntitySet="ComentarioEtiqueta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ComentarioUserId" Association="Es.Udc.DotNet.PracticaIS.Model.Store.FK_ComentarioUserId">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="Comentario" EntitySet="Comentario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoritoUserId" Association="Es.Udc.DotNet.PracticaIS.Model.Store.FK_FavoritoUserId">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="Favorito" EntitySet="Favorito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ValoracionUsrId" Association="Es.Udc.DotNet.PracticaIS.Model.Store.FK_ValoracionUsrId">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="Valoracion" EntitySet="Valoracion" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Comentario">
+          <Key>
+            <PropertyRef Name="comentarioId" />
+          </Key>
+          <Property Name="comentarioId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="texto" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="usrId" Type="bigint" Nullable="false" />
+          <Property Name="productoId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ComentarioEtiqueta">
+          <Key>
+            <PropertyRef Name="comentarioId" />
+            <PropertyRef Name="etiquetaId" />
+          </Key>
+          <Property Name="comentarioId" Type="bigint" Nullable="false" />
+          <Property Name="etiquetaId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Etiqueta">
+          <Key>
+            <PropertyRef Name="etiquetaId" />
+          </Key>
+          <Property Name="etiquetaId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="tag" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="ocurrencias" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Favorito">
+          <Key>
+            <PropertyRef Name="favoritoId" />
+          </Key>
+          <Property Name="favoritoId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="comentario" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="usrId" Type="bigint" Nullable="false" />
+          <Property Name="productoId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="usrId" />
+          </Key>
+          <Property Name="usrId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="loginName" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="enPassword" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="firstName" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="lastName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="email" Type="varchar" Nullable="false" MaxLength="60" />
+          <Property Name="language" Type="varchar" Nullable="false" MaxLength="2" />
+          <Property Name="country" Type="varchar" Nullable="false" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="Valoracion">
+          <Key>
+            <PropertyRef Name="valoracionId" />
+          </Key>
+          <Property Name="valoracionId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="voto" Type="int" Nullable="false" />
+          <Property Name="comentario" Type="varchar" MaxLength="500" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="usrId" Type="bigint" Nullable="false" />
+          <Property Name="vendedorId" Type="varchar" Nullable="false" MaxLength="30" />
+        </EntityType>
+        <Association Name="FK_ComentarioEtiquetaComentarioId">
+          <End Role="Comentario" Type="Es.Udc.DotNet.PracticaIS.Model.Store.Comentario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ComentarioEtiqueta" Type="Es.Udc.DotNet.PracticaIS.Model.Store.ComentarioEtiqueta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comentario">
+              <PropertyRef Name="comentarioId" />
+            </Principal>
+            <Dependent Role="ComentarioEtiqueta">
+              <PropertyRef Name="comentarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ComentarioEtiquetaEtiquetaId">
+          <End Role="Etiqueta" Type="Es.Udc.DotNet.PracticaIS.Model.Store.Etiqueta" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ComentarioEtiqueta" Type="Es.Udc.DotNet.PracticaIS.Model.Store.ComentarioEtiqueta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Etiqueta">
+              <PropertyRef Name="etiquetaId" />
+            </Principal>
+            <Dependent Role="ComentarioEtiqueta">
+              <PropertyRef Name="etiquetaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ComentarioUserId">
+          <End Role="UserProfile" Type="Es.Udc.DotNet.PracticaIS.Model.Store.UserProfile" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Comentario" Type="Es.Udc.DotNet.PracticaIS.Model.Store.Comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="usrId" />
+            </Principal>
+            <Dependent Role="Comentario">
+              <PropertyRef Name="usrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavoritoUserId">
+          <End Role="UserProfile" Type="Es.Udc.DotNet.PracticaIS.Model.Store.UserProfile" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Favorito" Type="Es.Udc.DotNet.PracticaIS.Model.Store.Favorito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="usrId" />
+            </Principal>
+            <Dependent Role="Favorito">
+              <PropertyRef Name="usrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ValoracionUsrId">
+          <End Role="UserProfile" Type="Es.Udc.DotNet.PracticaIS.Model.Store.UserProfile" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Valoracion" Type="Es.Udc.DotNet.PracticaIS.Model.Store.Valoracion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="usrId" />
+            </Principal>
+            <Dependent Role="Valoracion">
+              <PropertyRef Name="usrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Es.Udc.DotNet.PracticaIS.Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="OpinadorEntitiesContainer" annotation:LazyLoadingEnabled="false">
+          <EntitySet Name="Comentarios" EntityType="Es.Udc.DotNet.PracticaIS.Model.Comentario" />
+          <EntitySet Name="Etiquetas" EntityType="Es.Udc.DotNet.PracticaIS.Model.Etiqueta" />
+          <EntitySet Name="Favoritoes" EntityType="Es.Udc.DotNet.PracticaIS.Model.Favorito" />
+          <EntitySet Name="UserProfiles" EntityType="Es.Udc.DotNet.PracticaIS.Model.UserProfile" />
+          <EntitySet Name="Valoracions" EntityType="Es.Udc.DotNet.PracticaIS.Model.Valoracion" />
+          <AssociationSet Name="FK_ComentarioUserId" Association="Es.Udc.DotNet.PracticaIS.Model.FK_ComentarioUserId">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="Comentario" EntitySet="Comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoritoUserId" Association="Es.Udc.DotNet.PracticaIS.Model.FK_FavoritoUserId">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="Favorito" EntitySet="Favoritoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ValoracionUsrId" Association="Es.Udc.DotNet.PracticaIS.Model.FK_ValoracionUsrId">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="Valoracion" EntitySet="Valoracions" />
+          </AssociationSet>
+          <AssociationSet Name="ComentarioEtiqueta" Association="Es.Udc.DotNet.PracticaIS.Model.ComentarioEtiqueta">
+            <End Role="Comentario" EntitySet="Comentarios" />
+            <End Role="Etiqueta" EntitySet="Etiquetas" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Comentario">
+          <Key>
+            <PropertyRef Name="comentarioId" />
+          </Key>
+          <Property Name="comentarioId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="texto" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" />
+          <Property Name="usrId" Type="Int64" Nullable="false" />
+          <Property Name="productoId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="UserProfile" Relationship="Es.Udc.DotNet.PracticaIS.Model.FK_ComentarioUserId" FromRole="Comentario" ToRole="UserProfile" />
+          <NavigationProperty Name="Etiquetas" Relationship="Es.Udc.DotNet.PracticaIS.Model.ComentarioEtiqueta" FromRole="Comentario" ToRole="Etiqueta" />
+        </EntityType>
+        <EntityType Name="Etiqueta">
+          <Key>
+            <PropertyRef Name="etiquetaId" />
+          </Key>
+          <Property Name="etiquetaId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tag" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="ocurrencias" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Comentarios" Relationship="Es.Udc.DotNet.PracticaIS.Model.ComentarioEtiqueta" FromRole="Etiqueta" ToRole="Comentario" />
+        </EntityType>
+        <EntityType Name="Favorito">
+          <Key>
+            <PropertyRef Name="favoritoId" />
+          </Key>
+          <Property Name="favoritoId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" />
+          <Property Name="comentario" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="usrId" Type="Int64" Nullable="false" />
+          <Property Name="productoId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="UserProfile" Relationship="Es.Udc.DotNet.PracticaIS.Model.FK_FavoritoUserId" FromRole="Favorito" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="usrId" />
+          </Key>
+          <Property Name="usrId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="loginName" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="enPassword" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="firstName" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="lastName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Comentarios" Relationship="Es.Udc.DotNet.PracticaIS.Model.FK_ComentarioUserId" FromRole="UserProfile" ToRole="Comentario" />
+          <NavigationProperty Name="Favoritos" Relationship="Es.Udc.DotNet.PracticaIS.Model.FK_FavoritoUserId" FromRole="UserProfile" ToRole="Favorito" />
+          <NavigationProperty Name="Valoraciones" Relationship="Es.Udc.DotNet.PracticaIS.Model.FK_ValoracionUsrId" FromRole="UserProfile" ToRole="Valoracion" />
+          <Property Type="String" Name="language" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="country" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Valoracion">
+          <Key>
+            <PropertyRef Name="valoracionId" />
+          </Key>
+          <Property Name="valoracionId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="voto" Type="Int32" Nullable="false" />
+          <Property Name="comentario" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" />
+          <Property Name="usrId" Type="Int64" Nullable="false" />
+          <Property Name="vendedorId" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="UserProfile" Relationship="Es.Udc.DotNet.PracticaIS.Model.FK_ValoracionUsrId" FromRole="Valoracion" ToRole="UserProfile" />
+        </EntityType>
+        <Association Name="FK_ComentarioUserId">
+          <End Role="UserProfile" Type="Es.Udc.DotNet.PracticaIS.Model.UserProfile" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Comentario" Type="Es.Udc.DotNet.PracticaIS.Model.Comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="usrId" />
+            </Principal>
+            <Dependent Role="Comentario">
+              <PropertyRef Name="usrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavoritoUserId">
+          <End Role="UserProfile" Type="Es.Udc.DotNet.PracticaIS.Model.UserProfile" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Favorito" Type="Es.Udc.DotNet.PracticaIS.Model.Favorito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="usrId" />
+            </Principal>
+            <Dependent Role="Favorito">
+              <PropertyRef Name="usrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ValoracionUsrId">
+          <End Role="UserProfile" Type="Es.Udc.DotNet.PracticaIS.Model.UserProfile" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Valoracion" Type="Es.Udc.DotNet.PracticaIS.Model.Valoracion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="usrId" />
+            </Principal>
+            <Dependent Role="Valoracion">
+              <PropertyRef Name="usrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ComentarioEtiqueta">
+          <End Role="Comentario" Type="Es.Udc.DotNet.PracticaIS.Model.Comentario" Multiplicity="*" />
+          <End Role="Etiqueta" Type="Es.Udc.DotNet.PracticaIS.Model.Etiqueta" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EsUdcDotNetPracticaISModelStoreContainer" CdmEntityContainer="OpinadorEntitiesContainer">
+          <EntitySetMapping Name="Comentarios">
+            <EntityTypeMapping TypeName="Es.Udc.DotNet.PracticaIS.Model.Comentario">
+              <MappingFragment StoreEntitySet="Comentario">
+                <ScalarProperty Name="comentarioId" ColumnName="comentarioId" />
+                <ScalarProperty Name="texto" ColumnName="texto" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="usrId" ColumnName="usrId" />
+                <ScalarProperty Name="productoId" ColumnName="productoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Etiquetas">
+            <EntityTypeMapping TypeName="Es.Udc.DotNet.PracticaIS.Model.Etiqueta">
+              <MappingFragment StoreEntitySet="Etiqueta">
+                <ScalarProperty Name="etiquetaId" ColumnName="etiquetaId" />
+                <ScalarProperty Name="tag" ColumnName="tag" />
+                <ScalarProperty Name="ocurrencias" ColumnName="ocurrencias" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Favoritoes">
+            <EntityTypeMapping TypeName="Es.Udc.DotNet.PracticaIS.Model.Favorito">
+              <MappingFragment StoreEntitySet="Favorito">
+                <ScalarProperty Name="favoritoId" ColumnName="favoritoId" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="comentario" ColumnName="comentario" />
+                <ScalarProperty Name="usrId" ColumnName="usrId" />
+                <ScalarProperty Name="productoId" ColumnName="productoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserProfiles">
+            <EntityTypeMapping TypeName="Es.Udc.DotNet.PracticaIS.Model.UserProfile">
+              <MappingFragment StoreEntitySet="UserProfile">
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="language" ColumnName="language" />
+                <ScalarProperty Name="usrId" ColumnName="usrId" />
+                <ScalarProperty Name="loginName" ColumnName="loginName" />
+                <ScalarProperty Name="enPassword" ColumnName="enPassword" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Valoracions">
+            <EntityTypeMapping TypeName="Es.Udc.DotNet.PracticaIS.Model.Valoracion">
+              <MappingFragment StoreEntitySet="Valoracion">
+                <ScalarProperty Name="valoracionId" ColumnName="valoracionId" />
+                <ScalarProperty Name="voto" ColumnName="voto" />
+                <ScalarProperty Name="comentario" ColumnName="comentario" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="usrId" ColumnName="usrId" />
+                <ScalarProperty Name="vendedorId" ColumnName="vendedorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ComentarioEtiqueta" TypeName="Es.Udc.DotNet.PracticaIS.Model.ComentarioEtiqueta" StoreEntitySet="ComentarioEtiqueta">
+            <EndProperty Name="Comentario">
+              <ScalarProperty Name="comentarioId" ColumnName="comentarioId" />
+            </EndProperty>
+            <EndProperty Name="Etiqueta">
+              <ScalarProperty Name="etiquetaId" ColumnName="etiquetaId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="OpinadorEntityDataModel">
+        <EntityTypeShape EntityType="Es.Udc.DotNet.PracticaIS.Model.Comentario" Width="1.5" PointX="3" PointY="1.25" Height="2.3648893229166656" IsExpanded="true" />
+        <EntityTypeShape EntityType="Es.Udc.DotNet.PracticaIS.Model.Etiqueta" Width="1.5" PointX="5.25" PointY="1.5" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="Es.Udc.DotNet.PracticaIS.Model.Favorito" Width="1.5" PointX="3" PointY="4.375" Height="2.3648893229166656" IsExpanded="true" />
+        <EntityTypeShape EntityType="Es.Udc.DotNet.PracticaIS.Model.UserProfile" Width="1.5" PointX="0.75" PointY="4.125" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="Es.Udc.DotNet.PracticaIS.Model.Valoracion" Width="1.5" PointX="3" PointY="7.5" Height="2.3648893229166665" IsExpanded="true" />
+        <AssociationConnector Association="Es.Udc.DotNet.PracticaIS.Model.FK_ComentarioUserId" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="4.125" />
+          <ConnectorPoint PointX="1.5" PointY="2.4324446614583328" />
+          <ConnectorPoint PointX="3" PointY="2.4324446614583328" />
+        </AssociationConnector>
+        <AssociationConnector Association="Es.Udc.DotNet.PracticaIS.Model.FK_FavoritoUserId" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="5.5574446614583328" />
+          <ConnectorPoint PointX="3" PointY="5.5574446614583328" />
+        </AssociationConnector>
+        <AssociationConnector Association="Es.Udc.DotNet.PracticaIS.Model.FK_ValoracionUsrId" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="6.8744921875" />
+          <ConnectorPoint PointX="1.5" PointY="8.6824446614583337" />
+          <ConnectorPoint PointX="3" PointY="8.6824446614583337" />
+        </AssociationConnector>
+        <AssociationConnector Association="Es.Udc.DotNet.PracticaIS.Model.ComentarioEtiqueta" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="2.3939925130208337" />
+          <ConnectorPoint PointX="5.25" PointY="2.3939925130208337" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

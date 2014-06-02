@@ -1,0 +1,502 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2D662374-2498-401B-82B7-75191C5CAFFB}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Es.Udc.DotNet.PracticaIS.Web</RootNamespace>
+    <AssemblyName>PracticaIS.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.Unity, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Microsoft Unity Application Block 2.0\Bin\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Microsoft Unity Application Block 2.0\Bin\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Microsoft Unity Application Block 2.0\Bin\Microsoft.Practices.Unity.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception.Configuration, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Microsoft Unity Application Block 2.0\Bin\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="ModelUtil, Version=2.0.2.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\ModelUtil.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Css\Opinador.Styles.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Pages\AddFavorito.aspx" />
+    <Content Include="Pages\Comment.aspx" />
+    <Content Include="Pages\MainPage.aspx" />
+    <Content Include="Pages\Errors\InternalError.aspx" />
+    <Content Include="Pages\ModifyComment.aspx" />
+    <Content Include="Pages\NonExistAutorization.aspx" />
+    <Content Include="Pages\RemoveComment.aspx" />
+    <Content Include="Pages\SearchProducts.aspx" />
+    <Content Include="Pages\ShowComments.aspx" />
+    <Content Include="Pages\ShowFavorites.aspx" />
+    <Content Include="Pages\ShowProducts.aspx" />
+    <Content Include="Pages\ShowCommentsByTag.aspx" />
+    <Content Include="Pages\ShowPuntuations.aspx" />
+    <Content Include="Pages\ShowValoraciones.aspx" />
+    <Content Include="Pages\User\Authentication.aspx" />
+    <Content Include="Pages\User\ChangePassword.aspx" />
+    <Content Include="Pages\User\Logout.aspx" />
+    <Content Include="Pages\User\Register.aspx" />
+    <Content Include="Pages\User\UpdateUserProfile.aspx" />
+    <Content Include="Pages\Vote.aspx" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="XSLT\ShowProducts.xsl">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_GlobalResources\Common.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Common.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Common.es.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Common.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Common.gl.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Common.gl.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="HTTP\Session\SessionManager.cs" />
+    <Compile Include="HTTP\Session\SpecificCulturePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HTTP\Session\UserSession.cs" />
+    <Compile Include="HTTP\Util\CookiesManager.cs" />
+    <Compile Include="HTTP\View\ApplicationObjects\Countries.cs" />
+    <Compile Include="HTTP\View\ApplicationObjects\Languages.cs" />
+    <Compile Include="HTTP\View\ApplicationObjects\Locale.cs" />
+    <Compile Include="Pages\AddFavorito.aspx.cs">
+      <DependentUpon>AddFavorito.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\AddFavorito.aspx.designer.cs">
+      <DependentUpon>AddFavorito.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Comment.aspx.cs">
+      <DependentUpon>Comment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Comment.aspx.designer.cs">
+      <DependentUpon>Comment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MainPage.aspx.cs">
+      <DependentUpon>MainPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\MainPage.aspx.designer.cs">
+      <DependentUpon>MainPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Opinador.Master.cs">
+      <DependentUpon>Opinador.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Opinador.Master.designer.cs">
+      <DependentUpon>Opinador.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Errors\InternalError.aspx.cs">
+      <DependentUpon>InternalError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Errors\InternalError.aspx.designer.cs">
+      <DependentUpon>InternalError.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ModifyComment.aspx.cs">
+      <DependentUpon>ModifyComment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ModifyComment.aspx.designer.cs">
+      <DependentUpon>ModifyComment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NonExistAutorization.aspx.cs">
+      <DependentUpon>NonExistAutorization.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\NonExistAutorization.aspx.designer.cs">
+      <DependentUpon>NonExistAutorization.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RemoveComment.aspx.cs">
+      <DependentUpon>RemoveComment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\RemoveComment.aspx.designer.cs">
+      <DependentUpon>RemoveComment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SearchProducts.aspx.cs">
+      <DependentUpon>SearchProducts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\SearchProducts.aspx.designer.cs">
+      <DependentUpon>SearchProducts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ShowComments.aspx.cs">
+      <DependentUpon>ShowComments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ShowComments.aspx.designer.cs">
+      <DependentUpon>ShowComments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ShowFavorites.aspx.cs">
+      <DependentUpon>ShowFavorites.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ShowFavorites.aspx.designer.cs">
+      <DependentUpon>ShowFavorites.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ShowProducts.aspx.cs">
+      <DependentUpon>ShowProducts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ShowProducts.aspx.designer.cs">
+      <DependentUpon>ShowProducts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ShowCommentsByTag.aspx.cs">
+      <DependentUpon>ShowCommentsByTag.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ShowCommentsByTag.aspx.designer.cs">
+      <DependentUpon>ShowCommentsByTag.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ShowPuntuations.aspx.cs">
+      <DependentUpon>ShowPuntuations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ShowPuntuations.aspx.designer.cs">
+      <DependentUpon>ShowPuntuations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ShowValoraciones.aspx.cs">
+      <DependentUpon>ShowValoraciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ShowValoraciones.aspx.designer.cs">
+      <DependentUpon>ShowValoraciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\User\Authentication.aspx.cs">
+      <DependentUpon>Authentication.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\User\Authentication.aspx.designer.cs">
+      <DependentUpon>Authentication.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\User\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\User\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\User\Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\User\Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\User\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\User\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\User\UpdateUserProfile.aspx.cs">
+      <DependentUpon>UpdateUserProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\User\UpdateUserProfile.aspx.designer.cs">
+      <DependentUpon>UpdateUserProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Vote.aspx.cs">
+      <DependentUpon>Vote.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Vote.aspx.designer.cs">
+      <DependentUpon>Vote.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{9ED4D5EC-B70A-4928-A43F-2BF5E3242CE8}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\User\App_LocalResources\en-default\Authentication.aspx.resx" />
+    <Content Include="Pages\User\App_LocalResources\en-default\ChangePassword.aspx.resx" />
+    <Content Include="Pages\User\App_LocalResources\en-default\Register.aspx.resx" />
+    <Content Include="Pages\User\App_LocalResources\en-default\UpdateUserProfile.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Opinador.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\User\App_LocalResources\es\Authentication.aspx.es.resx" />
+    <Content Include="Pages\User\App_LocalResources\es\ChangePassword.aspx.es.resx" />
+    <Content Include="Pages\User\App_LocalResources\es\Register.aspx.es.resx" />
+    <Content Include="Pages\User\App_LocalResources\es\UpdateUserProfile.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\User\App_LocalResources\gl\Authentication.aspx.gl.resx" />
+    <Content Include="Pages\User\App_LocalResources\gl\ChangePassword.aspx.gl.resx" />
+    <Content Include="Pages\User\App_LocalResources\gl\Register.aspx.gl.resx" />
+    <Content Include="Pages\User\App_LocalResources\gl\UpdateUserProfile.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Errors\App_LocalResources\en-default\InternalError.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Errors\App_LocalResources\es\InternalError.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Errors\App_LocalResources\gl\InternalError.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\en-default\MainPage.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\es\MainPage.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\gl\MainPage.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Common.es.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Common.es.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\en-default\Opinador.Master.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\es\Opinador.Master.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\gl\Opinador.Master.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Common.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Common.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Common.gl.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Common.gl.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\en-default\SearchProducts.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\es\SearchProducts.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\gl\SearchProducts.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\en-default\ShowProducts.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\es\ShowProductos.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\gl\ShowProducts.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\en-default\Comment.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\es\Comment.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\gl\Comment.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\en-default\ShowComments.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\es\ShowComments.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\gl\ShowComments.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\en-default\ModifyComment.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\es\ModifyComment.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\gl\ModifyComment.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\en-default\NonExistAutorization.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\es\NonExistAutorization.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\gl\NonExistAutorization.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\en-default\Vote.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\es\Vote.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\gl\Vote.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\en-default\ShowPuntuations.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\es\ShowPuntuations.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\gl\ShowPuntuations.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\en-default\ShowValoraciones.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\es\ShowValoraciones.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\gl\ShowValoraciones.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\en-default\AddFavorito.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\es\AddFavorito.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\gl\AddFavorito.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\en-default\ShowFavorites.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\es\ShowFavorites.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\gl\ShowFavorites.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\en-default\ShowCommentsByTag.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\es\ShowCommentsByTag.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\App_LocalResources\gl\ShowCommentsByTag.aspx.gl.resx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1644</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/Web/MainPage.aspx</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="opinadorModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="opinadorModelStoreContainer">
+    <EntitySet Name="Comentario" EntityType="opinadorModel.Store.Comentario" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ComentarioEtiqueta" EntityType="opinadorModel.Store.ComentarioEtiqueta" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Etiqueta" EntityType="opinadorModel.Store.Etiqueta" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Favorito" EntityType="opinadorModel.Store.Favorito" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserProfile" EntityType="opinadorModel.Store.UserProfile" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Valoracion" EntityType="opinadorModel.Store.Valoracion" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_ComentarioEtiquetaComentarioId" Association="opinadorModel.Store.FK_ComentarioEtiquetaComentarioId">
+      <End Role="Comentario" EntitySet="Comentario" />
+      <End Role="ComentarioEtiqueta" EntitySet="ComentarioEtiqueta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ComentarioEtiquetaEtiquetaId" Association="opinadorModel.Store.FK_ComentarioEtiquetaEtiquetaId">
+      <End Role="Etiqueta" EntitySet="Etiqueta" />
+      <End Role="ComentarioEtiqueta" EntitySet="ComentarioEtiqueta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ComentarioUserId" Association="opinadorModel.Store.FK_ComentarioUserId">
+      <End Role="UserProfile" EntitySet="UserProfile" />
+      <End Role="Comentario" EntitySet="Comentario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FavoritoUserId" Association="opinadorModel.Store.FK_FavoritoUserId">
+      <End Role="UserProfile" EntitySet="UserProfile" />
+      <End Role="Favorito" EntitySet="Favorito" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ValoracionUsrId" Association="opinadorModel.Store.FK_ValoracionUsrId">
+      <End Role="UserProfile" EntitySet="UserProfile" />
+      <End Role="Valoracion" EntitySet="Valoracion" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Comentario">
+    <Key>
+      <PropertyRef Name="comentarioId" />
+    </Key>
+    <Property Name="comentarioId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="texto" Type="varchar" Nullable="false" MaxLength="500" />
+    <Property Name="fecha" Type="datetime" Nullable="false" />
+    <Property Name="usrId" Type="bigint" Nullable="false" />
+    <Property Name="productoId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ComentarioEtiqueta">
+    <Key>
+      <PropertyRef Name="comentarioId" />
+      <PropertyRef Name="etiquetaId" />
+    </Key>
+    <Property Name="comentarioId" Type="bigint" Nullable="false" />
+    <Property Name="etiquetaId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Etiqueta">
+    <Key>
+      <PropertyRef Name="etiquetaId" />
+    </Key>
+    <Property Name="etiquetaId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="tag" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="ocurrencias" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Favorito">
+    <Key>
+      <PropertyRef Name="favoritoId" />
+    </Key>
+    <Property Name="favoritoId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="fecha" Type="datetime" Nullable="false" />
+    <Property Name="comentario" Type="varchar" Nullable="false" MaxLength="500" />
+    <Property Name="usrId" Type="bigint" Nullable="false" />
+    <Property Name="productoId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserProfile">
+    <Key>
+      <PropertyRef Name="usrId" />
+    </Key>
+    <Property Name="usrId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="loginName" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="enPassword" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="firstName" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="lastName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="email" Type="varchar" Nullable="false" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Valoracion">
+    <Key>
+      <PropertyRef Name="valoracionId" />
+    </Key>
+    <Property Name="valoracionId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="voto" Type="int" Nullable="false" />
+    <Property Name="comentario" Type="varchar" MaxLength="500" />
+    <Property Name="fecha" Type="datetime" Nullable="false" />
+    <Property Name="usrId" Type="bigint" Nullable="false" />
+    <Property Name="vendedorId" Type="varchar" Nullable="false" MaxLength="30" />
+  </EntityType>
+  <Association Name="FK_ComentarioEtiquetaComentarioId">
+    <End Role="Comentario" Type="opinadorModel.Store.Comentario" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ComentarioEtiqueta" Type="opinadorModel.Store.ComentarioEtiqueta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comentario">
+        <PropertyRef Name="comentarioId" />
+      </Principal>
+      <Dependent Role="ComentarioEtiqueta">
+        <PropertyRef Name="comentarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ComentarioEtiquetaEtiquetaId">
+    <End Role="Etiqueta" Type="opinadorModel.Store.Etiqueta" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ComentarioEtiqueta" Type="opinadorModel.Store.ComentarioEtiqueta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Etiqueta">
+        <PropertyRef Name="etiquetaId" />
+      </Principal>
+      <Dependent Role="ComentarioEtiqueta">
+        <PropertyRef Name="etiquetaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ComentarioUserId">
+    <End Role="UserProfile" Type="opinadorModel.Store.UserProfile" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Comentario" Type="opinadorModel.Store.Comentario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserProfile">
+        <PropertyRef Name="usrId" />
+      </Principal>
+      <Dependent Role="Comentario">
+        <PropertyRef Name="usrId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FavoritoUserId">
+    <End Role="UserProfile" Type="opinadorModel.Store.UserProfile" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Favorito" Type="opinadorModel.Store.Favorito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserProfile">
+        <PropertyRef Name="usrId" />
+      </Principal>
+      <Dependent Role="Favorito">
+        <PropertyRef Name="usrId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ValoracionUsrId">
+    <End Role="UserProfile" Type="opinadorModel.Store.UserProfile" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Valoracion" Type="opinadorModel.Store.Valoracion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserProfile">
+        <PropertyRef Name="usrId" />
+      </Principal>
+      <Dependent Role="Valoracion">
+        <PropertyRef Name="usrId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

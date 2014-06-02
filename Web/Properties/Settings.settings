@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Es.Udc.DotNet.PracticaIS.Web.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Opinador_providerInvariantName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">System.Data.SqlClient</Value>
+    </Setting>
+    <Setting Name="Opinador_connectionString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source=localhost\SQLExpress; Initial Catalog=opinador; Integrated Security=True</Value>
+    </Setting>
+    <Setting Name="ShowComments_count" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">15</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

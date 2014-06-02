@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EsUdcDotNetPracticaISModelStoreContainer" CdmEntityContainer="OpinadorEntitiesContainer">
+    <EntitySetMapping Name="Comentarios">
+      <EntityTypeMapping TypeName="Es.Udc.DotNet.PracticaIS.Model.Comentario">
+        <MappingFragment StoreEntitySet="Comentario">
+          <ScalarProperty Name="comentarioId" ColumnName="comentarioId" />
+          <ScalarProperty Name="texto" ColumnName="texto" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="usrId" ColumnName="usrId" />
+          <ScalarProperty Name="productoId" ColumnName="productoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Etiquetas">
+      <EntityTypeMapping TypeName="Es.Udc.DotNet.PracticaIS.Model.Etiqueta">
+        <MappingFragment StoreEntitySet="Etiqueta">
+          <ScalarProperty Name="etiquetaId" ColumnName="etiquetaId" />
+          <ScalarProperty Name="tag" ColumnName="tag" />
+          <ScalarProperty Name="ocurrencias" ColumnName="ocurrencias" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Favoritoes">
+      <EntityTypeMapping TypeName="Es.Udc.DotNet.PracticaIS.Model.Favorito">
+        <MappingFragment StoreEntitySet="Favorito">
+          <ScalarProperty Name="favoritoId" ColumnName="favoritoId" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="comentario" ColumnName="comentario" />
+          <ScalarProperty Name="usrId" ColumnName="usrId" />
+          <ScalarProperty Name="productoId" ColumnName="productoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserProfiles">
+      <EntityTypeMapping TypeName="Es.Udc.DotNet.PracticaIS.Model.UserProfile">
+        <MappingFragment StoreEntitySet="UserProfile">
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="language" ColumnName="language" />
+          <ScalarProperty Name="usrId" ColumnName="usrId" />
+          <ScalarProperty Name="loginName" ColumnName="loginName" />
+          <ScalarProperty Name="enPassword" ColumnName="enPassword" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Valoracions">
+      <EntityTypeMapping TypeName="Es.Udc.DotNet.PracticaIS.Model.Valoracion">
+        <MappingFragment StoreEntitySet="Valoracion">
+          <ScalarProperty Name="valoracionId" ColumnName="valoracionId" />
+          <ScalarProperty Name="voto" ColumnName="voto" />
+          <ScalarProperty Name="comentario" ColumnName="comentario" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="usrId" ColumnName="usrId" />
+          <ScalarProperty Name="vendedorId" ColumnName="vendedorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ComentarioEtiqueta" TypeName="Es.Udc.DotNet.PracticaIS.Model.ComentarioEtiqueta" StoreEntitySet="ComentarioEtiqueta">
+      <EndProperty Name="Comentario">
+        <ScalarProperty Name="comentarioId" ColumnName="comentarioId" />
+      </EndProperty>
+      <EndProperty Name="Etiqueta">
+        <ScalarProperty Name="etiquetaId" ColumnName="etiquetaId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
